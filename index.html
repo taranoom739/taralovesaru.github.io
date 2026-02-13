@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Be My Valentine? 💕</title>
+<style>
+    body {
+        margin: 0;
+        font-family: 'Comic Sans MS', sans-serif;
+        background: linear-gradient(135deg, #ffd6e7, #ffeef5);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        overflow: hidden;
+        text-align: center;
+    }
+
+    .container {
+        background: white;
+        padding: 25px;
+        border-radius: 25px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        position: relative;
+        max-width: 400px;
+    }
+
+    h1 {
+        color: #ff4d88;
+        font-size: 26px;
+        margin-bottom: 15px;
+    }
+
+    img {
+        width: 100%;
+        border-radius: 20px;
+        margin-bottom: 15px;
+    }
+
+    button {
+        padding: 12px 20px;
+        margin: 10px;
+        border: none;
+        border-radius: 20px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    .yes {
+        background-color: #ff4d88;
+        color: white;
+    }
+
+    .yes:hover {
+        background-color: #ff1a66;
+        transform: scale(1.1);
+    }
+
+    .no {
+        background-color: #ccc;
+    }
+
+    .doodle {
+        position: absolute;
+        font-size: 40px;
+        opacity: 0.5;
+        animation: float 6s infinite ease-in-out;
+    }
+
+    @keyframes float {
+        0% { transform: translateY(0px) rotate(0deg); }
+        50% { transform: translateY(-20px) rotate(15deg); }
+        100% { transform: translateY(0px) rotate(0deg); }
+    }
+
+    .top-left { top: -20px; left: -20px; }
+    .top-right { top: -20px; right: -20px; }
+    .bottom-left { bottom: -20px; left: -20px; }
+    .bottom-right { bottom: -20px; right: -20px; }
+
+    #message {
+        font-size: 20px;
+        color: #ff4d88;
+        margin-top: 15px;
+        display: none;
+        opacity: 0;
+        animation: fadeIn 2s forwards;
+    }
+
+    #videoContainer {
+        display: none;
+        margin-top: 15px;
+        opacity: 0;
+        animation: fadeIn 2s forwards;
+    }
+
+    #videoContainer video {
+        width: 100%;
+        border-radius: 20px;
+    }
+
+    @keyframes fadeIn {
+        to { opacity: 1; }
+    }
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <div class="doodle top-left">🌸</div>
+    <div class="doodle top-right">💖</div>
+    <div class="doodle bottom-left">🌷</div>
+    <div class="doodle bottom-right">💘</div>
+
+    <h1>Will You Be My Valentine? 💌</h1>
+
+    <!-- Replace with your photo -->
+    <img src="your-photo.JPG" alt="Our Cute Picture">
+
+    <button class="yes" onclick="sayYes()">Yes 💕</button>
+    <button class="no" onclick="moveButton(this)">No 🙈</button>
+
+    <div id="message">YAYYY!!! ami kintu ONEK koshto kore ei jinish banaisi. idk background e gaan bajtese naki but na bajleo dhore ne bajtese.
+     ar likhar jaiga nai. HAPPY VALENTINE'S DAY!
+     LOVE YOU BYE!💗</div>
+
+    <div id="videoContainer">
+        <video id="loveVideo" controls playsinline>
+            <source src="ourvideo.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+</div>
+
+<!-- Background music plays automatically from page load and loops -->
+<audio id="bgMusic" autoplay loop playsinline>
+    <source src="tumsehi.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+
+<script>
+// When user clicks YES, show video + message, video starts
+function sayYes() {
+    document.getElementById("message").style.display = "block";
+    const videoContainer = document.getElementById("videoContainer");
+    videoContainer.style.display = "block";
+
+    const video = document.getElementById("loveVideo");
+    video.play().catch(() => {
+        // fallback for mobile autoplay restrictions
+        alert("Tap the video to play on mobile.");
+    });
+}
+
+// Make NO button move around playfully
+function moveButton(button) {
+    const x = Math.random() * (window.innerWidth - 120);
+    const y = Math.random() * (window.innerHeight - 70);
+    button.style.position = "absolute";
+    button.style.left = x + "px";
+    button.style.top = y + "px";
+}
+</script>
+
+</body>
+</html>
